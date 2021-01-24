@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Cui Kenshin</string>
+		<key>phoneNumber</key>
+		<string>18500131234</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Cui Tom</string>
+		<key>phoneNumber</key>
+		<string>18500131237</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Lee Terry</string>
+		<key>phoneNumber</key>
+		<string>18500131238</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Lee Jack</string>
+		<key>phoneNumber</key>
+		<string>18500131239</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Lee Rose</string>
+		<key>phoneNumber</key>
+		<string>18500131240</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Sun Kaoru</string>
+		<key>phoneNumber</key>
+		<string>18500131235</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Sun Rosa</string>
+		<key>phoneNumber</key>
+		<string>18500131236</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Wan Stephone</string>
+		<key>phoneNumber</key>
+		<string>18500131241</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Wang Lucy</string>
+		<key>phoneNumber</key>
+		<string>18500131242</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Wang Andy</string>
+		<key>phoneNumber</key>
+		<string>18500131245</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Zhang Joy</string>
+		<key>phoneNumber</key>
+		<string>18500131246</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Zhang Vivan</string>
+		<key>phoneNumber</key>
+		<string>18500131247</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Zhang Joyse</string>
+		<key>phoneNumber</key>
+		<string>18500131248</string>
+	</dict>
+</array>
+</plist>

@@ -21,6 +21,7 @@
 		2B9E48FB25B9545A00656321 /* ContactGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E48FA25B9545A00656321 /* ContactGroup.m */; };
 		2B9E491325B9674C00656321 /* persons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B9E491225B9674C00656321 /* persons.plist */; };
 		2B9E492225B97EC000656321 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E492125B97EC000656321 /* SecondViewController.m */; };
+		2BF8843425BD5DE700170495 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8843325BD5DE700170495 /* MyTableViewCell.m */; };
 		30B64148EF66830C21AF70D9 /* Pods_UI2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7051C08328D70BAEFCAB3FA1 /* Pods_UI2.framework */; };
 		F766FCB8E0B93A562ACEBB14 /* Pods_UI2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508B6C230A59A766B91EA21B /* Pods_UI2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,8 @@
 		2B9E491225B9674C00656321 /* persons.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = persons.plist; sourceTree = "<group>"; };
 		2B9E492025B97EC000656321 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		2B9E492125B97EC000656321 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		2BF8843225BD5DE700170495 /* MyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		2BF8843325BD5DE700170495 /* MyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		3FDBB727B77C8B8C908223DB /* Pods-UI2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI2.release.xcconfig"; path = "Target Support Files/Pods-UI2/Pods-UI2.release.xcconfig"; sourceTree = "<group>"; };
 		4D77CB69F818960F125C902F /* Pods-UI2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI2.debug.xcconfig"; path = "Target Support Files/Pods-UI2/Pods-UI2.debug.xcconfig"; sourceTree = "<group>"; };
 		508B6C230A59A766B91EA21B /* Pods_UI2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UI2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +153,8 @@
 				2B9E48FA25B9545A00656321 /* ContactGroup.m */,
 				2B9E492025B97EC000656321 /* SecondViewController.h */,
 				2B9E492125B97EC000656321 /* SecondViewController.m */,
+				2BF8843225BD5DE700170495 /* MyTableViewCell.h */,
+				2BF8843325BD5DE700170495 /* MyTableViewCell.m */,
 			);
 			path = UI2;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				2B9E48E525B930B800656321 /* Contact.m in Sources */,
 				2B9E492225B97EC000656321 /* SecondViewController.m in Sources */,
 				2B9E48BB25B92FEB00656321 /* main.m in Sources */,
+				2BF8843425BD5DE700170495 /* MyTableViewCell.m in Sources */,
 				2B9E48FB25B9545A00656321 /* ContactGroup.m in Sources */,
 				2B9E48AD25B92FEA00656321 /* SceneDelegate.m in Sources */,
 			);

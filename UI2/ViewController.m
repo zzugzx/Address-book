@@ -10,7 +10,7 @@
 #import "ContactGroup.h"
 #import <Masonry/Masonry.h>
 #import "SecondViewController.h"
-
+#import "MyTableViewCell.h"
 
 
 
@@ -80,7 +80,14 @@
 
     for (int i = 0; i < 26; i++) {
         ContactGroup *group = [[ContactGroup alloc] initWithName:[NSString stringWithFormat:@"%c", (i + 'A')] andDetail:[NSString stringWithFormat:@"With names beginning with %c", (i + 'A')] andContacts: [[NSMutableArray alloc] init]];
+        
+        
+        [group.contacts addObject:[Contact initWithName:nil andPhoneNumber:nil]];
+        
+        
         [self.contacts addObject:group];
+        
+        
     }
     
     [self.contacts addObject:[[ContactGroup alloc] initWithName:@"#" andDetail:[NSString stringWithFormat:@"others"] andContacts: [[NSMutableArray alloc] init]]];
@@ -140,12 +147,12 @@
     }
     // Configure the cell...
     static NSString *cellIdentifier = @"UITableViewCellIdentifierKey1";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
-    cell.textLabel.text = contact.name;
-    cell.detailTextLabel.text = contact.phoneNumber;
+    MyTableViewCell *cell = [[MyTableViewCell alloc] initWithName:@"Wang Zi" andPhoneNumber:@"123123123" andAge:@"12" andGender:@"男"];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+//    }
+//    cell.textLabel.text = contact.name;
+//    cell.detailTextLabel.text = contact.phoneNumber;
     return cell;
 }
 
@@ -224,7 +231,7 @@
     self.searchBar.text = @"";
     [self.tableView reloadData];
 }
-- (void) searchDataWithKeyWord:(NSString *) keyWord {
+- (void)searchDataWithKeyWord:(NSString *) keyWord {
     self.isSearch = YES;
     self.searchContacts = [[NSMutableArray alloc] init];
     [self.contacts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -283,3 +290,8 @@
     }
 }
 @end
+
+
+/*
+ registerClass
+ */

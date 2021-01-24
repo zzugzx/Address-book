@@ -14,9 +14,9 @@
             filePath = "UI2/MyTableViewCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "-init"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-setSelected:animated:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

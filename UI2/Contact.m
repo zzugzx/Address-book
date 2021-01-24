@@ -17,16 +17,18 @@
 
 @implementation Contact
 
-- (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber {
+- (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber andAge:(NSString *)age andGender:(NSString *) gender {
     if (self == [super init]) {
         self.name = name;
         self.phoneNumber = phoneNumber;
+        self.gender = gender;
+        self.age = age;
     }
     return self;
 }
 
-+ (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber {
-    return [[Contact alloc] initWithName:name andPhoneNumber:phoneNumber];
++ (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber andAge:(NSString *)age andGender:(NSString *) gender{
+    return [[Contact alloc] initWithName:name andPhoneNumber:phoneNumber andAge:age andGender:gender];
 }
 
 

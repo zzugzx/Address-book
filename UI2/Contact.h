@@ -14,11 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *phoneNumber;
+@property (nonatomic, copy) NSString *gender;
+@property (nonatomic, copy) NSString *age;
 
+- (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber andAge:(NSString *)age andGender:(NSString *) gender;
 
-- (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber;
++ (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber andAge:(NSString *)age andGender:(NSString *) gender;
 
-+ (instancetype)initWithName: (NSString *)name andPhoneNumber: (NSString *)phoneNumber ;
 @end
 
 NS_ASSUME_NONNULL_END

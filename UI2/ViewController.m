@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "SecondViewController.h"
 #import "MyTableViewCell.h"
-
+#import "MyMaleTableViewCell.h"
 
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
@@ -47,6 +47,10 @@
     self.navigationItem.rightBarButtonItems = arr;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    [self.tableView registerClass:[MyTableViewCell class] forCellReuseIdentifier:@"Female"];
+    [self.tableView registerClass:[MyMaleTableViewCell class] forCellReuseIdentifier:@"Male"];
+    
     [self addSearchBar];
     [self.view addSubview:self.tableView];
     
@@ -80,14 +84,7 @@
 
     for (int i = 0; i < 26; i++) {
         ContactGroup *group = [[ContactGroup alloc] initWithName:[NSString stringWithFormat:@"%c", (i + 'A')] andDetail:[NSString stringWithFormat:@"With names beginning with %c", (i + 'A')] andContacts: [[NSMutableArray alloc] init]];
-        
-        
-        [group.contacts addObject:[Contact initWithName:nil andPhoneNumber:nil]];
-        
-        
         [self.contacts addObject:group];
-        
-        
     }
     
     [self.contacts addObject:[[ContactGroup alloc] initWithName:@"#" andDetail:[NSString stringWithFormat:@"others"] andContacts: [[NSMutableArray alloc] init]]];
@@ -109,13 +106,13 @@
         if (c >= 'a' && c <= 'z') c += 'A' - 'a';
         if (c == j + 'A') {
             ContactGroup *group = self.contacts[j];
-            [group.contacts addObject:[Contact initWithName: person[@"name"] andPhoneNumber:person[@"phoneNumber"]]];
+            [group.contacts addObject:[Contact initWithName:person[@"name"] andPhoneNumber:person[@"phoneNumber"] andAge:person[@"age"] andGender:person[@"gender"]]];
             self.contacts[j] = group;
             return;
         }
     }
     ContactGroup *group = self.contacts[26];
-    [group.contacts addObject:[Contact initWithName: person[@"name"] andPhoneNumber:person[@"phoneNumber"]]];
+    [group.contacts addObject:[Contact initWithName:person[@"name"] andPhoneNumber:person[@"phoneNumber"] andAge:person[@"age"] andGender:person[@"gender"]]];
     self.contacts[26] = group;
 }
 
@@ -146,14 +143,16 @@
         contact = group.contacts[indexPath.row];
     }
     // Configure the cell...
-    static NSString *cellIdentifier = @"UITableViewCellIdentifierKey1";
-    MyTableViewCell *cell = [[MyTableViewCell alloc] initWithName:@"Wang Zi" andPhoneNumber:@"123123123" andAge:@"12" andGender:@"男"];
-//    if (!cell) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-//    }
-//    cell.textLabel.text = contact.name;
-//    cell.detailTextLabel.text = contact.phoneNumber;
-    return cell;
+    if ([contact.gender isEqualToString:@"Female"]) {
+        MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Female" forIndexPath:indexPath];
+        [cell updateWithContact:contact];
+        return cell;
+    }
+    else {
+        MyMaleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Male" forIndexPath:indexPath];
+        [cell updateWithContact:contact];
+        return cell;
+    }
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -166,8 +165,8 @@
 }
 - (void)add {
     SecondViewController *nextview = [[SecondViewController alloc] init];
-    nextview.callback = ^(NSString *name, NSString *phoneNumber){
-        NSDictionary *person = @{@"name":name, @"phoneNumber":phoneNumber};
+    nextview.callback = ^(NSString *name, NSString *phoneNumber, NSString *age, NSString *gender){
+        NSDictionary *person = @{@"name":name, @"phoneNumber":phoneNumber, @"age":age, @"gender":gender};
         [self addDataWithPerson:person];
         [self SaveToFile];
         [self.tableView reloadData];
@@ -191,13 +190,6 @@
     return nil;
 }
 
-
-//- (nullable NSString *) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-//    ContactGroup *group = self.contacts[section];
-//    return group.detail;
-//}
-
-#pragma  mark - 搜索栏的创建
 - (nullable NSArray<NSString *> *) sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (self.isSearch) return nil;
     NSMutableArray *index = [[NSMutableArray alloc] init];
@@ -206,23 +198,39 @@
     return index;
 }
 
+
+//- (nullable NSString *) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+//    ContactGroup *group = self.contacts[section];
+//    return group.detail;
+//}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SecondViewController *nextview = [[SecondViewController alloc] init];
     ContactGroup *group = self.contacts[indexPath.section];
     Contact *contact = group.contacts[indexPath.row];
     nextview.name = contact.name;
     nextview.phoneNumber = contact.phoneNumber;
-    nextview.callback = ^(NSString *name, NSString *phoneNumber){
+    nextview.age = contact.age;
+    nextview.gender = contact.gender;
+    nextview.callback = ^(NSString *name, NSString *phoneNumber, NSString *age, NSString *gender){
         contact.name = name;
         contact.phoneNumber = phoneNumber;
+        contact.age = age;
+        contact.gender = gender;
         [group.contacts removeObjectAtIndex:indexPath.row];
-        NSDictionary *person = @{@"name":name, @"phoneNumber":phoneNumber};
+        NSDictionary *person = @{@"name":name, @"phoneNumber":phoneNumber, @"age":age, @"gender":gender};
         [self.contacts replaceObjectAtIndex:indexPath.section withObject:group];
         [self addDataWithPerson:person];
+        [self SaveToFile];
         [self.tableView reloadData];
     };
     [self.navigationController pushViewController:nextview animated:YES];
 }
+
+
+
+#pragma  mark - 搜索栏的创建
 
 
 
@@ -274,7 +282,9 @@
         ContactGroup *group = self.contacts[i];
         [group.contacts enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             Contact *contact = obj;
-            NSDictionary *person = @{@"name":contact.name, @"phoneNumber":contact.phoneNumber};
+            NSDictionary *person = @{@"name":contact.name, @"phoneNumber":contact.phoneNumber, @"age":contact.age, @"gender":contact.gender};
+            
+            
             [data addObject: person];
         }];
     }
@@ -291,7 +301,3 @@
 }
 @end
 
-
-/*
- registerClass
- */

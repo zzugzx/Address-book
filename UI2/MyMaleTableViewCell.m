@@ -1,13 +1,14 @@
 //
-//  MyTableViewCell.m
+//  MyMaleTableViewCell.m
 //  UI2
 //
 //  Created by bytedance on 2021/1/24.
 //
 
-#import "MyTableViewCell.h"
+#import "MyMaleTableViewCell.h"
+#import <Masonry/Masonry.h>
 
-@interface MyTableViewCell ()
+@interface MyMaleTableViewCell ()
 
 
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -18,12 +19,16 @@
 
 @end
 
-@implementation MyTableViewCell
+@implementation MyMaleTableViewCell
 
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    // Initialization code
+}
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.MyimageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"a"]];
+        self.MyimageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"b"]];
         self.nameLabel = [[UILabel alloc] init];
         self.phoneNumberLabel = [[UILabel alloc] init];
         self.ageLabel = [[UILabel alloc] init];
